@@ -1,0 +1,14 @@
+def merge_intervals(intervals):
+    if not intervals:
+        return []
+
+    sorted_intervals = sorted((start, end) for start, end in intervals)
+    merged = []
+
+    for start, end in sorted_intervals:
+        if not merged or start > merged[-1][1]:
+            merged.append([start, end])
+        else:
+            merged[-1][1] = max(merged[-1][1], end)
+
+    return merged

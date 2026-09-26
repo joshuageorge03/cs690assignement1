@@ -1,0 +1,11 @@
+def window_sums(values, width):
+    if width <= 0:
+        raise ValueError("width must be positive")
+    if width > len(values):
+        return []
+    window_sum = sum(values[:width])
+    result = [window_sum]
+    for i in range(width, len(values)):
+        window_sum += values[i] - values[i - width]
+        result.append(window_sum)
+    return result
